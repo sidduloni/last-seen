@@ -2,7 +2,14 @@
 Last seen
 
 Controller:
-	function last_seen() {
+
+	function users_list() {
+	$q = 'SELECT * FROM users inner join online_users on users.users_id = online_users.uid where users.users_id != 		"'.sales_person_id().'" ';
+	$all_users['all_users'] = $this->db->query($q)->result_array();
+
+	}
+
+function last_seen() {
 		$uid = $this->input->post('uid');
 		$date = date('d-m-Y H:i:s'); 
 		$currentDate = strtotime($date); 
